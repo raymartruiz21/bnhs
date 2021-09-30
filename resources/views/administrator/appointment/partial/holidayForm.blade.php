@@ -1,10 +1,10 @@
-<form id="holidayForm">@csrf
+<form id="holidayForm" autocomplete="off">@csrf
     <div class="modal fade" id="holidayModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="holidayModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog modal-md">
             <div class="modal-content pb-0">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="holidayModalLabel">Holiday</h5>
+                    <h5 class="modal-title" id="holidayModalLabel">Holiday/Appointment</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -32,8 +32,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary btnCancelHoliday">Close</button>
-                    <button type="submit" class="btn btn-primary btnSaveHoliday">Save</button>
+                    <button type="button" class="btn btn-secondary btnCancelHoliday"><i class="far fa-times-circle"></i>&nbsp;&nbsp;Close</button>
+                    <button type="submit" class="btn btn-info btnSaveHoliday"><i class="far fa-save"></i>&nbsp;&nbsp;Save</button>
                 </div>
             </div>
         </div>
