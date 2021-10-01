@@ -4,19 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>PNOP &mdash; Admission</title>
-
+    <title>eBNHS - Admission</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <!-- Toast -->
+    <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}"> --}}
 
     <!-- CSS Libraries -->
     {{-- <link rel="stylesheet" href="../node_modules/bootstrap-social/bootstrap-social.css"> --}}
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('css/toast/iziToast.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/toast/iziToast.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components.css') }}"> --}}
     <style>
         .center-screen {
             display: flex;
@@ -28,10 +37,9 @@
     </style>
 </head>
 
-<body>
-
+<body class="hold-transition login-page">
     <div id="app">
-        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        <div class="modal modal-outline shadow-sm fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -58,30 +66,31 @@
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-1 text-center">
-                                            <img src="{{ asset('image/logo/logo.png') }}" class="" width="120%">
+                                        <div class="col-2 text-center">
+                                            <img src="{{ asset('image/logo/bn.jpg') }}" class="img-fluid rounded" width="120%">
                                         </div>
-                                        <div class="col-10">
-                                            <h6 class="mb-1">REQUIREMENTS FOR INCOMING GRADE 7, TRANSFEREES AND BALIK
-                                                ARAL</h6>
-                                            <p class="mb-0">&middot; Copy of Latest Grades &middot; Copy of Good Moral
-                                                Certificate &middot; Copy of PSA Birth
-                                                Certificate</p>
-                                            <p class="mb-0">
-                                                <i class="fa fa-phone"></i>&nbsp;&nbsp;0917-112-7716&nbsp;&nbsp;
-                                                <i class="fa fa-at"></i>&nbsp;&nbsp;302016@deped.gov.ph&nbsp;&nbsp;
-                                                <i class="fab fa-facebook"></i>&nbsp;&nbsp;@PiliNationalHS </p>
+                                        <div class="col-10"><br>
+                                            <b>
+                                                <h6 class="mb-1">REQUIREMENTS FOR INCOMING GRADE 7, TRANSFEREES AND BALIK
+                                                    ARAL</h6>
+                                                <p class="mb-0">&middot; Copy of Latest Grades &middot; Copy of Good Moral
+                                                    Certificate &middot; Copy of PSA Birth
+                                                    Certificate</p>
+                                                <address class="mb-0">
+                                                    <i class="fa fa-phone" style="color:  #0066ff;"></i>&nbsp;&nbsp;0917-112-7716&nbsp;&nbsp;
+                                                    <i class="fa fa-at" style="color:  #0066ff;"></i>&nbsp;&nbsp;302016@deped.gov.ph&nbsp;&nbsp;
+                                                    <i class="fab fa-facebook" style="color:  #0066ff;"></i>&nbsp;&nbsp;@balaogannationalhighschool  
+                                                </address>
+                                            </b>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card card-primary shadow">
+                            <div class="card card-outline card-primary shadow-sm">
                                 <div class="row m-0">
                                     <div class="col-12 col-md-12 col-lg-4 p-0">
-                                        <div class="card-header text-center">
-                                            <h4>Enrollment Form</h4>
-                                        </div>
                                         <div class="card-body">
+                                            <h4 class="text-center">Enrollment Form</h4><hr>  
                                             <div class="form-group floating-addon">
                                                 <label>LRN (Learner Reference Number)</label>
                                                 <div class="input-group">
@@ -272,9 +281,10 @@
 
                                                 <div class="form-group text-right mb-0">
                                                     <button type="submit"
-                                                        class="btn btn-round btn-lg btn-primary btnEnroll">
-                                                        Submit
+                                                        class="btn btn-round btn-primary btnEnroll">
+                                                        <i class="fas fa-check"></i>&nbsp;&nbsp; Submit
                                                     </button>
+                                                    <a href="{{ route('auth.login') }}" class="btn btn-outline-warning float-left mt-2"><i class="fas fa-undo-alt"></i>&nbsp;&nbsp;Back</a>
                                                 </div>
                                             </form>
                                         </div>
@@ -292,23 +302,33 @@
     </div>
 
 
-
-    <!-- General JS Scripts -->
+    <!-- jQuery -->
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    {{-- Toast --}}
+    <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
+    {{-- Popper --}}
+    <script src="{{ asset('plugins/popper/popper.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+    
+    {{-- <!-- General JS Scripts -->
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}">
     </script>
     <script src="{{ asset('js/bootstrap.min.js') }}">
-    </script>
+    </script> --}}
     <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="{{ asset('js/stisla.js') }}"></script>
+    {{-- <script src="{{ asset('js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
 
     <!-- Template JS File -->
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
-    <script src="{{ asset('js/toast/iziToast.min.js') }}"></script>
+    <script src="{{ asset('js/toast/iziToast.min.js') }}"></script> --}}
     <script type="text/javascript" src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations.js">
     </script>
     <script src="{{ asset('js/global.js') }}">

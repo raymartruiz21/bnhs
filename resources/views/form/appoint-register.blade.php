@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>PNOP &mdash;</title>
+    <title>eBNHS &mdash; Appointment</title>
 
-    <!-- General CSS Files -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
-
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('css/toast/iziToast.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
     <style>
         .center-screen {
@@ -47,32 +47,30 @@
     </style>
 </head>
 
-<body>
-
+<body class="hold-transition login-page">
     <div id="app">
         <section class="section">
             <div class="container mt-2 center-screen">
                 <div class="row">
                     <div class="col-lg">
-                        <p style="font-size: 20px" class="mt-5">Dear user,</p>
+                        <p style="font-size: 20px" class="mt-5"><b><i>Dear user,</i></b></p>
                         <p style="font-size: 20px" class="mt-5">All of the information you provided will be secure and
                             restricted
-                            only to Pili National High
+                            only to Balaogan National High
                             School Online Portal, school-related businesses and or purposes. We assure your information
                             provided is protected.</p>
                         <p style="font-size: 20px" class="mt-4">These online services of the school aim to avoid the
                             crowd at the
                             school premises observing
                             the COVID-19 health protocols.</p>
-                        <p style="font-size: 20px" class="mt-4">Thank you</p>
+                        <p style="font-size: 20px" class="mt-4"><b>Thank you</b></p>
                     </div>
                     <div class="col-lg">
-                        <form action="{{ route('appoint.save') }}" method="POST">@csrf
-                            <div class="card shadow">
-                                <div class="card-header">
-                                    <h4>Appointment Form</h4>
-                                </div>
+                        <form action="{{ route('appoint.save') }}" method="POST">
+                            @csrf
+                            <div class="card card-outline card-warning shadow-sm">
                                 <div class="card-body pb-0">
+                                    <h4>Appointment Form</h4><hr>
                                     <div class="form-group">
                                         <label>Full name</label>
                                         <input type="text" class="form-control" name="fullname" required>
@@ -105,7 +103,7 @@
 
                                 </div>
                                 <div class="card-footer">
-                                    <button class="btn btn-primary">Submit</button>
+                                    <button class="btn btn-outline-primary btn-block"><i class="fas fa-clipboard"></i>&nbsp;&nbsp;Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -117,7 +115,7 @@
 
 
 
-    <!-- General JS Scripts -->
+    {{-- <!-- General JS Scripts -->
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}">
     </script>
@@ -131,7 +129,14 @@
 
     <!-- Template JS File -->
     <script src="{{ asset('js/scripts.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script> --}}
+    <!-- jQuery -->
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+    {{-- loaction --}}
     <script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations.js"></script>
     <script src="{{ asset('js/global.js') }}"></script>
     <!-- Page Specific JS File -->

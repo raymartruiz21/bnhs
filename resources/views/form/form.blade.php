@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>PNOP &mdash; Admission</title>
+    <title>eBNHS - Admission</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -59,7 +59,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-1 text-center">
-                                            <img src="{{ asset('image/logo/logo.png') }}" class="" width="120%">
+                                            <img src="{{ asset('image/logo/bn.jpg') }}" class="img-fluid rounded " width="120%">
                                         </div>
                                         <div class="col-10">
                                             <h6 class="mb-1">REQUIREMENTS FOR INCOMING GRADE 7, TRANSFEREES AND BALIK
@@ -273,6 +273,7 @@
                                                         Submit
                                                     </button>
                                                 </div>
+                                                <a href="{{ route('auth.login') }}" class="btn btn-outline-warning float-left mt-2">Back</a>
                                             </form>
                                         </div>
                                     </div>

@@ -39,12 +39,12 @@ loadData();
 let populationBySex = (data) => {
     var ctx = document.getElementById("myChart4").getContext("2d");
     var myChart = new Chart(ctx, {
-        type: "pie",
+        type: "doughnut",
         data: {
             datasets: [
                 {
                     data: [data.Male, data.Female],
-                    backgroundColor: ["#191d21", "#63ed7a"],
+                    backgroundColor: ["#008ae6", "#ff5050"],
                     label: "Dataset 1",
                 },
             ],
@@ -84,10 +84,10 @@ let populationByCurriculum = (data) => {
                 {
                     data: [data.stem, data.bec, data.spa, data.spj],
                     backgroundColor: [
-                        "#191d21",
-                        "#63ed7a",
-                        "#fc544b",
-                        "#6777ef",
+                        "#ff5050",
+                        "#ff9933",
+                        "#009933",
+                        "#6666ff",
                     ],
                     label: "Dataset 1",
                 },
