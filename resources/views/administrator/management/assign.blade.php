@@ -3,12 +3,24 @@
 {{-- <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatable/responsive.bootstrap4.min.css') }}"> --}}
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
+<style>
+    .color-font {
+        color: #6666ff;
+      }
+</style>
 @endsection
+
 @section('content')
 <div class="container-fluid">
     <section class="content-header">
+        <hr>
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h3><i class="fas fa-tasks  color-font"></i>&nbsp;&nbsp;Manage Section and Subject</h3>
+            </div>
+        </div>
+        <hr>
         <div class="section-body">
-            <h2 class="section-title">Manage Section and Subject</h2>
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12">
                     <div class="card">

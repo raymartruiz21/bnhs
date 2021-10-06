@@ -53,7 +53,7 @@ let populationBySex = (data) => {
         options: {
             responsive: true,
             legend: {
-                position: "bottom",
+                position: "top",
             },
         },
     });
@@ -78,7 +78,7 @@ loadDataSex();
 let populationByCurriculum = (data) => {
     var cbc = document.getElementById("myChart3").getContext("2d");
     return new Chart(cbc, {
-        type: "pie",
+        type: "doughnut",
         data: {
             datasets: [
                 {
@@ -97,7 +97,7 @@ let populationByCurriculum = (data) => {
         options: {
             responsive: true,
             legend: {
-                position: "bottom",
+                position: "top",
             },
         },
     });

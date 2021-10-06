@@ -74,8 +74,8 @@ class EnrollmentController extends Controller
 
         if ($enrolledSubject->grade_level == 7) { //if grade 7
             Student::where('id', $enrolledSubject->student_id)->update([
-                'orig_password' => Crypt::encrypt("pnhs"),
-                'password' => Hash::make("pnhs"),
+                'orig_password' => Crypt::encrypt("password"),
+                'password' => Hash::make("password"),
             ]);
         }
 

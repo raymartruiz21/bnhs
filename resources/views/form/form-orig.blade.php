@@ -34,6 +34,9 @@
             /* text-align: center; */
             min-height: 100vh;
         }
+        .login {
+            color: #3366cc;
+        }
     </style>
 </head>
 
@@ -73,7 +76,7 @@
                                             <b>
                                                 <h6 class="mb-1">REQUIREMENTS FOR INCOMING GRADE 7, TRANSFEREES AND BALIK
                                                     ARAL</h6>
-                                                <p class="mb-0">&middot; Copy of Latest Grades &middot; Copy of Good Moral
+                                                <p class="mb-0">Copy of Latest Grades &middot; Copy of Good Moral
                                                     Certificate &middot; Copy of PSA Birth
                                                     Certificate</p>
                                                 <address class="mb-0">
@@ -90,7 +93,8 @@
                                 <div class="row m-0">
                                     <div class="col-12 col-md-12 col-lg-4 p-0">
                                         <div class="card-body">
-                                            <h4 class="text-center">Enrollment Form</h4><hr>  
+                                            <h4 class="text-center login"><b>Enrollment Form</b></h4>
+                                            <hr style="border-color: #3366cc;"> 
                                             <div class="form-group floating-addon">
                                                 <label>LRN (Learner Reference Number)</label>
                                                 <div class="input-group">
@@ -280,11 +284,17 @@
                                                 </div>
 
                                                 <div class="form-group text-right mb-0">
-                                                    <button type="submit"
-                                                        class="btn btn-round btn-primary btnEnroll">
-                                                        <i class="fas fa-check"></i>&nbsp;&nbsp; Submit
-                                                    </button>
-                                                    <a href="{{ route('auth.login') }}" class="btn btn-outline-warning float-left mt-2"><i class="fas fa-undo-alt"></i>&nbsp;&nbsp;Back</a>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            
+                                                            <a href="{{ route('auth.login') }}" class="btn btn-warning float-left btn-block"><i class="fas fa-undo-alt"></i>&nbsp;&nbsp;Back</a>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <button type="submit" class="btn btn-round btn-primary btn-block btnEnroll">
+                                                                <i class="fas fa-check"></i>&nbsp;&nbsp; Submit
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>

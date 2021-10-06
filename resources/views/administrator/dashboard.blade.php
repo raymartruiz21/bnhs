@@ -1,24 +1,28 @@
 @extends('../layout/app')
-@section('content')
+<style>
+    .iconcolor {
+        background-color: #0088cc;
+    }
+    .color-font {
+          color: #6666ff;
+      }
+</style>
 
-<!-- Content Header (Page header) -->
+@section('content')
 <section class="content-header">
     <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>Dashboard</h1>
-          <p class="text-secondary">Active Academic Year :{{ empty($activeAY)?'No active academic year':'S/Y '.$activeAY->from.'-'.$activeAY->to }}</p>
+        <hr>
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h3><i class="fab fa-dropbox color-font"></i>&nbsp;&nbsp;Dashboard</h3>
+                <p class="text-secondary">Active Academic Year :{{ empty($activeAY)?'No active academic year':'S/Y '.$activeAY->from.'-'.$activeAY->to }}</p>
+            </div>
         </div>
-      </div>
-    </div><!-- /.container-fluid -->
-</section>
-
-<section class="content">
-    <div class="container-fluid">
+        <hr>
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
-                  <span class="info-box-icon elevation-1" style="background-color: #6666ff;"><i class="fas fa-user" style="color: white;"></i></span>
+                  <span class="info-box-icon elevation-1 iconcolor"><i class="fas fa-user" style="color: white;"></i></span>
       
                   <div class="info-box-content">
                     <span class="info-box-text">No. of Enrollee</span>
@@ -31,7 +35,7 @@
               <!-- /.col -->
               <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                  <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-user-check"></i></span>
+                  <span class="info-box-icon elevation-1 iconcolor"><i class="fas fa-user-check" style="color: white;"></i></span>
       
                   <div class="info-box-content">
                     <span class="info-box-text">No. of Student</span>
@@ -48,7 +52,7 @@
       
               <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                  <span class="info-box-icon elevation-1" style="background-color: #00cc66;"><i class="fas fa-users" style="color: white;"></i></span>
+                  <span class="info-box-icon elevation-1 iconcolor"><i class="fas fa-users" style="color: white;"></i></span>
       
                   <div class="info-box-content">
                     <span class="info-box-text">No. of Teacher</span>
@@ -61,7 +65,7 @@
               <!-- /.col -->
               <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                  <span class="info-box-icon elevation-1" style="background-color: #ff9999;"><i class="fas fa-paste" style="color: white;"></i></span>
+                  <span class="info-box-icon elevation-1 iconcolor"><i class="fas fa-paste" style="color: white;"></i></span>
       
                   <div class="info-box-content">
                     <span class="info-box-text">No. of Section</span>
@@ -75,10 +79,10 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-8 col-md-8 col-12 col-sm-12">
-                <div class="row">
+            {{-- <div class="col-lg-8 col-md-8 col-12 col-sm-12"> --}}
+                {{-- <div class="row"> --}}
                     <div class="col-md-6 col-lg-6 col-12 col-sm-12">
-                        <div class="card">
+                        <div class="card card-outline card-warning shadow-sm">
                             <div class="card-header">
                                 <h6>Population by Sex</h6>
                             </div>
@@ -88,7 +92,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-12 col-sm-12">
-                        <div class="card">
+                        <div class="card card-outline card-warning shadow-sm">
                             <div class="card-header">
                                 <h6>Population by Curriculum</h6>
                             </div>
@@ -107,10 +111,10 @@
                             </div>
                         </div>
                     </div> --}}
-                </div>
-            </div>
+                {{-- </div> --}}
+            {{-- </div> --}}
 
-            <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+            {{-- <div class="col-lg-4 col-md-12 col-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <h5>Appointment Today</h5>
@@ -135,7 +139,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>
@@ -273,7 +277,6 @@
 </section> --}}
 @endsection
 @section('moreJs')
-{{-- <script src="{{ asset('js/chart/chart.min.js') }}"></script> --}}
 <!-- ChartJS -->
 <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
 <script src="{{ asset('administrator/dashboard.js') }}"></script>

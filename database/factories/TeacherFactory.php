@@ -31,8 +31,8 @@ class TeacherFactory extends Factory
             'teacher_lastname' => $this->faker->lastName(),
             'teacher_gender' => $this->faker->randomElement($array = array('Male', 'Female')),
             'username' => Helper::create_username($this->faker->firstName(), $this->faker->lastName()),
-            'password' => Hash::make('pnhs'),
-            'orig_password' => Crypt::encrypt('pnhs'),
+            'password' => Hash::make('pass123'),
+            'orig_password' => Crypt::encrypt('pass123'),
         ];
     }
 }

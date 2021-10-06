@@ -2,6 +2,11 @@
 @section('moreCss')
 <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatable/responsive.bootstrap4.min.css') }}">
+<style>
+    .color-font {
+        color: #6666ff;
+    }
+</style>
 @endsection
 @section('content')
 
@@ -10,9 +15,15 @@
 {{-- Modal end --}}
 
 <div class="container-fluid">
-    <section class="section">
+    <section class="content-header">
+        <hr>
+        <div class="row mb-2">
+            <div class="col-12">
+                <h3><i class="fas fa-undo-alt color-font"></i>&nbsp;&nbsp;Back Subject</h3>
+            </div>
+        </div>
+        <hr>
         <div class="section-body">
-            <h2 class="section-title">Back Subject</h2>
             <div class="col-12">
                 <div class="card">
     

@@ -45,7 +45,7 @@ class StudentFactory extends Factory
             'guardian_name' => $this->faker->name(),
             'guardian_contact_no' => '09277422150',
             'username' => Helper::create_username($this->faker->lastName(), $this->faker->lastName()),
-            'orig_password' => Crypt::encrypt('pnhs'),
+            'orig_password' => Crypt::encrypt('password'),
             'password' => '$2y$10$p6lwjObc4DNSy3VaXeqNcu9XBf1W9FYQ2CD0tpihuiXlmvahnCnTW',
             'student_status' => null,
         ];

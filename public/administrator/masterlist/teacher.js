@@ -30,8 +30,8 @@ const table_teacher = $("#teacherTable").DataTable({
         {
             data: null,
             render: function (data) {
-                return `<button type="button" class="btn btn-sm btn-warning tdelete btnDelete_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
-                    <i class="fas fa-user-times"></i>
+                return `<button type="button" class="btn btn-sm btn-danger tdelete btnDelete_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
+                    <i class="fas fa-trash"></i>
                     </button>&nbsp;
                     <button type="button" class="btn btn-sm btn-info tedit btnEdit_${data.id} pt-0 pb-0 " id="${data.id}">
                          <i class="fas fa-edit"></i>

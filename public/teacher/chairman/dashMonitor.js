@@ -1,8 +1,8 @@
 const myAsset = [
-    { font: "fas fa-atom", color: "bg-primary" },
-    { font: "fas fa-users", color: "bg-danger" },
-    { font: "fas fa-palette", color: "bg-warning" },
-    { font: "fas fa-file-signature", color: "bg-success" },
+    { font: "far fa-newspaper"},
+    { font: "fab fa-audible"},
+    { font: "fas fa-award"},
+    { font: "fas fa-paint-brush"},
 ];
 let dashMonitor = () => {
     let dashHTML = "";
@@ -14,43 +14,39 @@ let dashMonitor = () => {
         .done(function (data) {
             data.forEach((val, i) => {
                 dashHTML += `
-                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                    <div class="card card-statistic-1">
-                        <div class="card-icon ${myAsset[i].color}">
-                            <i class="${myAsset[i].font}"></i>
-                        </div>
-                        <div class="card-wrap">
-                            <div class="card-header">
-                                <h4>${val.curriculum}</h4>
-                            </div>
-                            <div class="card-body">
-                               ${
-                                   val.pending == 0
-                                       ? `
-                                        <div class="card-body" style="font-size: 16px">
-                                        <small class="m-0">Enrolled: <b> ${val.enrolled}</b></small>
-                                        `
-                                       : `
-                                        ${
-                                            val.enrolled == 0
-                                                ? `
-                                                <div class="card-body" style="font-size: 16px">
-                                                <small class="m-0">Pending: <b> ${val.pending}</b></small>
-                                                `
-                                                : `
-                                                <div class="card-body" style="font-size: 16px">
-                                                <small class="m-0">Enrolled: <b> ${val.enrolled}</b></small>
-                                                <small class="m-0">Pending: <b> ${val.pending}</b></small>
-                                                 `
-                                        }
-
+                <div class="col-12 col-sm-12 col-md-6 col-lg-3">
+                    <div class="info-box">
+                    <span class="info-box-icon elevation-1" style="background-color: #6666ff;"><i class="${myAsset[i].font}" style="color: white;"></i></span>
+        
+                    <div class="info-box-content">
+                        <span class="info-box-text">${val.curriculum}</span>
+                        <span class="info-box-number">
+                        ${
+                            val.pending == 0
+                                ? `
+                                 <small class="m-0">Enrolled: <b> ${val.enrolled}</b></small>
+                                 `
+                                : `
+                                 ${
+                                     val.enrolled == 0
+                                         ? `
+                                         <small class="m-0">Pending: <b> ${val.pending}</b></small>
                                          `
-                               }
-                            </div>
-                            </div>
-                        </div>
+                                         : `
+                                         <small class="m-0">Enrolled: <b> ${val.enrolled}</b></small>
+                                         <small class="m-0">Pending: <b> ${val.pending}</b></small>
+                                     `
+                                 }
+
+                             `
+                        }
+                        </span>
                     </div>
+                    <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
                 </div>
+                <!-- /.col -->
                `;
             });
             $(".dashMonitor").html(dashHTML);

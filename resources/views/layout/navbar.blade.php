@@ -94,13 +94,16 @@
   
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+        {{-- Admin --}}
       @if (Auth::guard('web')->check())
         <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                <span class="badge badge-info pb-1 pt-1" style="font-size: 12px">Admin</span>
+                &nbsp;&nbsp;
                 <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::guard('web')->user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="#" class="dropdown-item has-icon">
+                <a href="{{ route('admin.user') }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
                 <a href="{{ route('auth.logout') }}"
@@ -146,7 +149,7 @@
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="#" class="dropdown-item has-icon">
+                <a href="{{ route('student.profile') }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
                 <a href="{{ route('auth.logout') }}"

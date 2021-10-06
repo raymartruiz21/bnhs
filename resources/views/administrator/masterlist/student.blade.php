@@ -2,28 +2,33 @@
 @section('moreCss')
 <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatable/responsive.bootstrap4.min.css') }}">
+<style>
+    .color-font {
+        color: #6666ff;
+    }
+</style>
 @endsection
-@section('content')
 
+@section('content')
 <!-- Modal -->
 @include('administrator/masterlist/partial/modal')
 {{-- Modal end --}}
 
 <div class="container-fluid">
     <section class="content-header">
-        <div class="section-body">
-            <div class="col-12">
-                <div class="row justify-content-between">
-                    <div class="col-lg-5 col-md-8">
-                        <h2 class="section-title">Student Masterlist</h2>
-                    </div>
-                    <div class="col-lg-2 col-md-2">
-                        <button class="btn float-right btn-primary my-4" id="btnStudentModal">
-                            <i class="fas fa-plus-circle"></i>&nbsp;Student
-                        </button>
-                    </div>
-                </div>
+        <hr>
+        <div class="row mb-2 justify-content-between">
+            <div class="col-md-6 col-12">
+                <h3><i class="fas fa-id-badge color-font"></i>&nbsp;&nbsp;Student Masterlist</h3>
             </div>
+            <div class="col-md-6 col-12">
+                <button class="btn float-right btn-outline-primary" id="btnStudentModal">
+                    <i class="fas fa-user-plus"></i>&nbsp;&nbsp;Add Student
+                </button>
+            </div>
+        </div>
+        <hr>
+        <div class="section-body">
             <div class="col-12">
                 <div class="card">
     

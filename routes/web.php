@@ -141,7 +141,7 @@ Route::middleware(['auth:web', 'preventBackHistory'])->name('admin.')->prefix('a
     Route::post('section/save', [SectionController::class, 'store']);
     Route::get('section/edit/{section}', [SectionController::class, 'edit']);
     Route::delete('section/delete/{id}', [SectionController::class, 'destroy']);
-    Route::post('section/check-section', [SectionController::class, 'checkSection']);
+    Route::post('section/check-section', [SectionController::class, 'checkSection']);   
 
     // subject-route
     Route::get('subject', [AdminController::class, 'subject'])->name('subject');
