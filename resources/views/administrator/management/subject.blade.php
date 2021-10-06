@@ -1,12 +1,24 @@
 @extends('../layout/app')
 @section('moreCss')
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
+<style>
+    .color-font {
+        color: #6666ff;
+      }
+</style>
 @endsection
+
 @section('content')
 <div class="container-fluid">
     <section class="content-header">
+        <hr>
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h3><i class="fas fa-book-reader color-font"></i>&nbsp;&nbsp;Manage Subject</h3>
+            </div>
+        </div>
+        <hr>
         <div class="section-body">
-            <h2 class="section-title">Manage Subject</h2>
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12">
                     <div class="card">

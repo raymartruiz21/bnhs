@@ -34,14 +34,12 @@
             min-height: 100vh;
         }
         .style {
-            color: #ff6600;
             font-size: 20px;
         }
-        .login {
+        .login, .address, .style {
             color: #3366cc;
         }
         .address {
-            color:  #0066ff;
             font-size: 20px;
         }
     </style>
@@ -59,9 +57,9 @@
                             </div>
                             <div class="col-10"><br>
                                 <b>
-                                    <h4 class="mb-1">REQUIREMENTS FOR INCOMING GRADE 7, TRANSFEREES AND BALIK
-                                        ARAL</h4>
-                                    <p class="mb-0">&middot; Copy of Latest Grades &middot; Copy of Good Moral
+                                    <h6 class="mb-1">REQUIREMENTS FOR INCOMING GRADE 7, TRANSFEREES AND BALIK
+                                            ARAL</h6>
+                                    <p class="mb-0">Copy of Latest Grades &middot; Copy of Good Moral
                                         Certificate &middot; Copy of PSA Birth
                                         Certificate</p>
                                     <address class="mb-0">
@@ -81,20 +79,20 @@
     <div class="login-box" id="app">
         <div class="card card-outline card-primary shadow-sm">
             <div class="card-body">
-                <h4 class="login text-center">Login</h4><hr style="border-color: #3366cc;">
+                <h4 class="login text-center"><b>Login</b></h4><hr style="border-color: #3366cc;">
                 <p class="login-box-msg">Sign in to start your session</p>
                 <div class="col-12">
                     @if (session()->has('msg'))
-                        <div class="alert alert-warning text-center" role="alert" style="color: white;">
+                        <div class="alert alert-danger text-center" role="alert" style="color: white;">
                             {{ session('msg') }}
                         </div>
                     @endif
                 </div>
-                <form method="POST" action="{{ route('auth.login_post') }}" class="needs-validation" novalidate="">
+                <form method="POST" action="{{ route('auth.login_post') }}" class="needs-validation" novalidate="" autocomplete="off">
                     @csrf
                     <div class="form-group">
                         <label for="get_your_input">Username | ID No.</label>
-                        <input id="get_your_input" type="text" class="form-control" name="get_your_input" tabindex="1" required autofocus>
+                        <input id="get_your_input" type="text" class="form-control" name="get_your_input" tabindex="1" required autofocus autocomplete="off">
                         <div class="invalid-feedback">
                             Please fill this field [username or ID No.]
                         </div>
@@ -104,7 +102,7 @@
                         <div class="d-block">
                             <label for="password" class="control-label">Password</label>
                         </div>
-                        <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                        <input id="password" type="password" class="form-control" name="password" tabindex="2" required autocomplete="off">
                         <div class="invalid-feedback">
                             Please fill in your password
                         </div>

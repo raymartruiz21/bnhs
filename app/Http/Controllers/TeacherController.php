@@ -141,8 +141,8 @@ class TeacherController extends Controller
             'teacher_gender' => $request->gender,
             'roll_no' => empty($dataret->roll_no) ? $request->roll_no : $dataret->roll_no,
             'username' => empty($dataret->username) ? Helper::create_username($request->firstname, $request->lastname) : $dataret->username,
-            'orig_password' => empty($dataret->orig_password) ? Crypt::encrypt("pnhs") : $dataret->orig_password,
-            'password' => empty($dataret->password) ? Hash::make("pnhs") : $dataret->password,
+            'orig_password' => empty($dataret->orig_password) ? Crypt::encrypt("pass123") : $dataret->orig_password,
+            'password' => empty($dataret->password) ? Hash::make("pass123") : $dataret->password,
         ]);
     }
 

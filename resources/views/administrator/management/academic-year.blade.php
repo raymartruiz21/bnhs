@@ -3,13 +3,21 @@
 <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatable/responsive.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
+<style>
+    .color-font {
+        color: #6666ff;
+    }
+</style>
 @endsection
+
 @section('content')
-<section class="section">
+<section class="content-header">
     <div class="section-body">
-        <h2 class="section-title">Academic Year</h2>
         <div class="col-lg-6 offset-lg-3 mt-5">
-            <div class="card">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3><i class="far fa-clock color-font"></i>&nbsp;&nbsp;Academic Year</h3>
+                </div>
                 <div class="card-body">
                     <form id="schoolYearForm">@csrf
                         <input type="hidden" name="id">
@@ -23,12 +31,12 @@
                                     maxlength="4" name="to" placeholder="Year to (eg. 2020)">
                             </div>
                             <div class="mt-1 col-lg-2 col-md-2 col-sm-12">
-                                <button type="submit" class="btn my-1 btn-block btn-info" id="btnSaveAY">Save</button>
+                                <button type="submit" class="btn my-1 btn-block btn-outline-primary" id="btnSaveAY">Save</button>
                             </div>
                         </div>
                     </form>
                     {{-- <div class="table-responsive mt-1"> --}}
-                    <table class="table table-bordered text-center" id="school_year_Table">
+                    <table class="table table-bordered table-hover text-center" id="school_year_Table">
                         <thead>
                             <tr>
                                 <th class="text-center" width="65%">Academic Year</th>

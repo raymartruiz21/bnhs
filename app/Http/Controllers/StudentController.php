@@ -58,8 +58,8 @@ class StudentController extends Controller
             'guardian_name' => $request->guardian_name,
             'guardian_contact_no' => $request->guardian_contact_no,
             'username' => empty($dataret->username) ? Helper::create_username($request->student_firstname, $request->student_lastname) : $dataret->username,
-            'orig_password' => empty($dataret->orig_password) ? Crypt::encrypt("pnhs") : $dataret->orig_password,
-            'password' => empty($dataret->password) ? Hash::make("pnhs") : $dataret->password,
+            'orig_password' => empty($dataret->orig_password) ? Crypt::encrypt("password") : $dataret->orig_password,
+            'password' => empty($dataret->password) ? Hash::make("password") : $dataret->password,
             'student_status' => null,
             'completer' => $request->completer,
         ]);

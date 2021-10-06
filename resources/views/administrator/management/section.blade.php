@@ -3,12 +3,24 @@
 {{-- <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatable/responsive.bootstrap4.min.css') }}"> --}}
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
+<style>
+    .color-font {
+          color: #6666ff;
+      }
+</style>
 @endsection
-@section('content')
+
+@section('content') 
 <div class="container-fluid">
     <section class="content-header">
+        <hr>
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h3><i class="fas fa-puzzle-piece color-font"></i>&nbsp;&nbsp;Manage Section</h3>
+            </div>
+        </div>
+        <hr>
         <div class="section-body">
-            <h2 class="section-title">Manage Section</h2>
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12">
                     <div class="card">
@@ -105,10 +117,6 @@
 @endsection
 
 @section('moreJs')
-{{-- <script src="{{ asset('js/datatable/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/datatable/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('js/datatable/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('js/datatable/responsive.bootstrap4.min.js') }}"></script> --}}
-<script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+{{-- <script src="{{ asset('js/select2/select2.full.min.js') }}"></script> --}}
 <script src="{{ asset('administrator/management/section.js') }}"></script>
 @endsection

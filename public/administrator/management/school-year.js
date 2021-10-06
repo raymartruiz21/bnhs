@@ -37,7 +37,7 @@ let school_year_Table = $("#school_year_Table").DataTable({
             render: function (data) {
                 if (data.status == 1) {
                     return `
-                    <button type="button" class="btn btn-sm btn-info editAY edit_${data.id}  pl-5 pr-5" id="${data.id}">Edit</button>`;
+                    <button type="button" class="btn btn-sm btn-outline-info editAY edit_${data.id}  pl-5 pr-5" id="${data.id}"><span class="fas fa-edit"></span></button>`;
                 } else {
                     return `
                             <div class="btn-group" role="group" aria-label="Basic example">

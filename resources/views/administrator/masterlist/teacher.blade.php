@@ -2,9 +2,14 @@
 @section('moreCss')
 <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatable/responsive.bootstrap4.min.css') }}">
+<style>
+    .color-font {
+        color: #6666ff;
+    }
+</style>
 @endsection
-@section('content')
 
+@section('content')
 <!-- Modal -->
 <form id="teacherForm" method="POST">@csrf
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
@@ -59,22 +64,21 @@
 
 <div class="container-fluid">
     <section class="content-header">
+        <hr>
+        <div class="row mb-2 justify-content-between">
+            <div class="col-md-6 col-12">
+                <h3><i class="fas fa-user-cog color-font"></i>&nbsp;&nbsp;Teacher Masterlist</h3>
+            </div>
+            <div class="col-md-6 col-12">
+                <button class="btn float-right btn-outline-primary" id="btnMidalTeacher">
+                    <i class="fas fa-user-plus"></i>&nbsp;&nbsp;Add Teacher
+                </button>
+            </div>
+        </div>
+        <hr>
         <div class="section-body">
             <div class="col-12">
-                <div class="row justify-content-between">
-                    <div class="col-lg-5 col-md-8">
-                        <h2 class="section-title">Teacher Masterlist</h2>
-                    </div>
-                    <div class="col-lg-2 col-md-2">
-                        <button class="btn float-right btn-primary my-4" id="btnMidalTeacher">
-                            <i class="fas fa-plus-circle"></i>&nbsp;Teacher
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card">
-    
+                <div class="card card-outline card-primary">
                     <div class="card-body mt-2">
                         {{-- <div class="table-responsive"> --}}
                         {{-- dt-responsive nowrap --}}
