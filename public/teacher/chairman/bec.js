@@ -107,14 +107,14 @@ let tableCurriculum = $("#tableCurriculum").DataTable({
             render: function (data) {
                 if (data.enroll_status == "Dropped") {
                     return `<button type="button" class="btn btn-sm btn-danger cDelete btnDelete_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
-                    <i class="fas fa-user-times"></i>
+                    Delete
                     </button>
                     `;
                 } else {
                     return `<button type="button" class="btn btn-sm btn-danger cDelete btnDelete_${
                         data.id
                     }  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
-                    <i class="fas fa-trash-alt"></i>
+                    Delete
                     </button>&nbsp;
                    ${
                        data.enroll_status == "Enrolled"
@@ -122,7 +122,7 @@ let tableCurriculum = $("#tableCurriculum").DataTable({
                     Change
                </button>`
                            : ` <button type="button" class="btn btn-sm btn-info cEdit btnEdit_${data.id} pt-0 pb-0 pl-3 pr-3 " id="${data.id}">
-                           <i class="fas fa-edit"></i>Section
+                Section
                </button>`
                    }
                     `;

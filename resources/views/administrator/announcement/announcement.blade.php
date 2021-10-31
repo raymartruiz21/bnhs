@@ -4,14 +4,12 @@
 <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.bootstrap4.min.css') }}">
 @endsection
 @section('content')
-<div class="container-fluid">
-    <section class="section">
-        <div class="section-body">
-            <h2 class="section-title">Announcement</h2>
-    
-        </div>
-    </section>
-</div>
+<section class="section">
+    <div class="section-body">
+        <h2 class="section-title">Announcement</h2>
+
+    </div>
+</section>
 @endsection
 @section('moreJs')
 <script src="{{ asset('js/datatable/jquery.dataTables.min.js') }}"></script>

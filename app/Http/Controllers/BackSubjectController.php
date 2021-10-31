@@ -60,4 +60,16 @@ class BackSubjectController extends Controller
             ]);
         }
     }
+
+    public function monitorSeniorHighFailSubject($student)
+    {
+        return response()->json(
+            BackSubject::select('subjects.descriptive_title')
+                ->join('students', 'back_subjects.student_id', 'students.id')
+                ->join('subjects', 'back_subjects.subject_id', 'subjects.id')
+                ->where('students.id', $student)
+                ->where('back_subjects.remarks', 'none')
+                ->get()
+        );
+    }
 }

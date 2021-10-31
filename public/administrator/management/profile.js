@@ -29,7 +29,7 @@ $("#schooProfileForm").submit(function (e) {
     })
         .done(function (response) {
             $("#btnSaveSP").html("Save Changes").attr("disabled", false);
-            getToast("success", "Success", "Successfully added new teacher");
+            getToast("success", "Successfully", "added");
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
@@ -38,7 +38,7 @@ $("#schooProfileForm").submit(function (e) {
 });
 
 let eStatus = (value, id) => {
-    console.log(value, id);
+    // console.log(value, id);
     $.ajax({
         url: `enrollment/status`,
         type: "POST",
@@ -50,9 +50,9 @@ let eStatus = (value, id) => {
     })
         .done(function (data) {
             if (value == "no") {
-                getToast("info", "Done", "Enrollment has been ended!");
+                getToast("info", "Enrollment", " has been ended!");
             } else {
-                getToast("info", "Active", "Enrollment has been activated!");
+                getToast("success", "Enrollment", " has been activated");
             }
         })
         .fail(function (jqxHR, textStatus, errorThrown) {

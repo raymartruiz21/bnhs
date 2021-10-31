@@ -177,8 +177,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary modalClose">Close</button>
-                    <button type="submit" class="btn btn-outline-primary btnSaveEnroll">&nbsp;&nbsp;Enroll&nbsp;&nbsp;</button>
+                    <button type="button" class="btn btn-secondary modalClose">Close</button>
+                    <button type="submit" class="btn btn-primary btnSaveEnroll">&nbsp;&nbsp;Enroll&nbsp;&nbsp;</button>
                 </div>
             </div>
         </div>

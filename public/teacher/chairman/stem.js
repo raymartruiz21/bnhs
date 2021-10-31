@@ -105,25 +105,38 @@ let tableCurriculum = $("#tableCurriculum").DataTable({
         {
             data: null,
             render: function (data) {
+                if (data.req_grade != null || data.req_goodmoral != null || data.req_psa != null) {
+                    
+                    return `
+                        <button type="button" class="btn btn-warning btn-sm pt-0 pb-0 pl-3 pr-3 btnRequirement" value="${data.fullname + "^" + data.req_grade + '^' + data.req_goodmoral + '^' + data.req_psa}"><i class="fas fa-file-import"></i> view</button>
+                      `;
+                    } else {
+                    return '--- None ---';
+                }
+            }
+        },
+        {
+            data: null,
+            render: function (data) {
                 if (data.enroll_status == "Dropped") {
                     return `<button type="button" class="btn btn-sm btn-danger cDelete btnDelete_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
-                    <i class="fas fa-user-times"></i>Delete
+                    Delete
                     </button>
                     `;
                 } else {
                     return `<button type="button" class="btn btn-sm btn-danger cDelete btnDelete_${
                         data.id
                     }  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
-                    <i class="fas fa-trash-alt"></i>Delete
+                    Delete
                     </button>&nbsp;
                    ${
                        data.enroll_status == "Enrolled"
                            ? ` <button type="button" class="btn btn-sm btn-primary cEdit btnEdit_${data.id} pt-0 pb-0 pl-3 pr-3 " id="${data.id}">
-                           <i class="fas fa-edit"></i>Change
-                        </button>`
+                    Change
+               </button>`
                            : ` <button type="button" class="btn btn-sm btn-info cEdit btnEdit_${data.id} pt-0 pb-0 pl-3 pr-3 " id="${data.id}">
-                           <i class="fas fa-edit"></i>Section
-                        </button>`
+                Section
+               </button>`
                    }
                     `;
                 }
@@ -131,3 +144,31 @@ let tableCurriculum = $("#tableCurriculum").DataTable({
         },
     ],
 });
+
+
+$(document).on('click', ".btnRequirement", function () {
+    let dirNow = $('input[name="dirNow"]').val();
+    let req_grade = document.getElementById("req_grade");
+    req_grade.setAttribute('src', dirNow + $(this).val().split("^")[1]);
+    let req_psa = document.getElementById("req_psa");
+    req_psa.setAttribute('src', dirNow + $(this).val().split("^")[3]);
+    let req_goodmoral = document.getElementById("req_goodmoral");
+    req_goodmoral.setAttribute('src', dirNow + $(this).val().split("^")[2]);
+    $("#viewRequirementTitle").text($(this).val().split("^")[0])
+    $("#viewRequirementModal").modal("show")
+});
+
+$("#req_grade").on('click', function () {
+    urlNow = $(this).attr("src");
+    window.open(urlNow,'_target')
+})
+
+$("#req_goodmoral").on('click', function () {
+    urlNow = $(this).attr("src");
+    window.open(urlNow,'_target')
+})
+
+$("#req_psa").on('click', function () {
+    urlNow = $(this).attr("src");
+    window.open(urlNow,'_target')
+})

@@ -26,16 +26,15 @@ const table_teacher = $("#teacherTable").DataTable({
         },
         { data: "teacher_gender" },
         { data: "username" },
-        { data: "orig_password" },
+        // { data: "orig_password" },
         {
             data: null,
             render: function (data) {
-                return `<button type="button" class="btn btn-sm btn-danger tdelete btnDelete_${data.id}  pt-0 pb-0 pl-2 pr-2" id="${data.id}">
-                    <i class="fas fa-trash"></i>
-                    </button>&nbsp;
-                    <button type="button" class="btn btn-sm btn-info tedit btnEdit_${data.id} pt-0 pb-0 " id="${data.id}">
-                         <i class="fas fa-edit"></i>
-                    </button>
+                return `
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" style="font-size:9px" class="btn btn-sm text-white btn-info tedit btnEdit_${data.id}" id="${data.id}">Edit </button>
+                        <button type="button" style="font-size:9px" class="btn btn-sm text-white btn-danger pl-3 pr-3 tdelete btnDelete_${data.id}" id="${data.id}">Delete</button>
+                    </div>
                     `;
             },
         },
@@ -60,7 +59,7 @@ $("#teacherForm").submit(function (e) {
     })
         .done(function (response) {
             $("#btnSave").html("Save");
-            getToast("success", "Success", "Successfully added new teacher");
+            getToast("success", "Successfully", "added new Teacher");
             $("#teacherForm")[0].reset();
             table_teacher.ajax.reload();
         })
@@ -91,7 +90,7 @@ $(document).on("click", ".tdelete", function () {
             $(".btnDelete_" + id)
                 .html(`<i class="fas fa-user-times"></i>`)
                 .attr("disabled", false);
-            getToast("success", "Success", "deleted one record");
+            getToast("info", "Successfully", "deleted one record");
             $("#teacherForm")[0].reset();
             table_teacher.ajax.reload();
         })

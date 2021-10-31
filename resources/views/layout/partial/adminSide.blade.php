@@ -1,162 +1,85 @@
-<style>
-  .color-font {
-      color: #6666ff;
-  }
-</style>
-
-<nav class="mt-2">
-  {{-- sidebar --}}
-  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-    <li class="nav-header">Dashboard</li>
-    <li class="nav-item">
-      <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->is('admin/my/dashboard')?'active':'' }}">
-        <i class="nav-icon fas fa-house-user"></i>
-        <p>
-          Dashboard
-        </p>
-      </a>
+<!-- -->
+<ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+    <li class="nav-item {{ request()->is('admin/my/dashboard')?'active':'' }}"><a class="nav-link" href="{{ route('admin.dashboard') }}">
+        <i class="fas fa-tachometer-alt nav-icon"></i> Dashboard</a>
     </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link">
-        <i class="nav-icon far fa-calendar-check"></i>
-          <p>
-            Announcement
-          </p>
-      </a>
+    <li class="nav-title">TRANSACTION</li>
+    {{-- <li class="nav-item"><a class="nav-link" href="#">
+        <i class="fas fa-bullhorn nav-icon"></i> Blog</a>
     </li>
-    <li class="nav-item">
-      <a href="{{ route('admin.appointment') }}" class="nav-link {{ request()->is('admin/my/appointment')?'active':'' }}">
-        <i class="nav-icon far fa-calendar-check"></i>
-          <p>
-            Appointment
-          </p>
-      </a>
+    <li class="nav-item"><a class="nav-link" href="#">
+        <i class="far fa-newspaper nav-icon"></i> Announcement</a>
+    </li> --}}
+    <li class="nav-item {{ request()->is('admin/my/appointment')?'active':'' }}"><a class="nav-link" href="{{ route('admin.appointment') }}">
+        <i class="far fa-calendar-check nav-icon"></i> Appointment</a>
     </li>
-    <li class="nav-item">
-      <a href="{{ route('admin.enrollment') }}" class="nav-link {{ request()->is('admin/my/enrollment')?'active':'' }}">
-        <i class="nav-icon far fa-address-card"></i>
-        <p>
-          Enrollee's List
-        </p>
-      </a>
+    <li class="nav-title">LIST</li>
+    <li class="nav-item {{ request()->is('admin/my/enrollment')?'active':'' }}"><a class="nav-link" href="{{ route('admin.enrollment') }}">
+        <i class="far fa-address-card nav-icon"></i> Enrollee</a>
     </li>
-      <li class="nav-header">Management Section</li>
-      <li class="nav-item nav-item dropdown">
-        <a href="#" class="nav-link {{ request()->is('admin/my/section') || request()->is('admin/my/subject') || request()->is('admin/my/assign') || request()->is('admin/my/chairman')?'active':'' }}">
-          <i class="nav-icon fas fa-tasks"></i>
-          <p>
-              Management
-          <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{ route('admin.section') }}" class="nav-link {{ request()->is('admin/my/section')?'active':'' }}">
-            <i class="nav-icon fas fa-server"></i>
-            <p>Section</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.subject') }}" class="nav-link {{ request()->is('admin/my/subject')?'active':'' }}">
-              <i class="nav-icon far fa-file-alt"></i>
-              <p>
-                  Subject
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.assign') }}" class="nav-link {{ request()->is('admin/my/assign')?'active':'' }}">
-            <i class="nav-icon far fa-bookmark"></i>
-            <p>Assign</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.chairman') }}" class="nav-link {{ request()->is('admin/my/chairman')?'active':'' }}">
-            <i class="nav-icon fas fa-chalkboard-teacher"></i>
-            <p>Chairman</p>
-            </a>
-          </li>
+    <!-- -->
+    <li class="nav-title">Management Section</li>
+    <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
+        <i class="fas fa-clipboard-list nav-icon"></i>Management</a>
+        <ul class="nav-group-items">
+        <li class="nav-item{{ request()->is('admin/my/chairman')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.chairman') }}"><span class="nav-icon fas fa-chalkboard-teacher"></span> Chairman</a>
+        </li>
+        <li class="nav-item{{ request()->is('admin/my/subject')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.subject') }}"><span class="nav-icon far fa-file-alt"></span> Subject</a>
+        </li>
+        <li class="nav-item{{ request()->is('admin/my/assign')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.assign') }}"><span class="nav-icon far fa-bookmark"></span>Assign Class and Adviser</a>
+        </li>
+        <li class="nav-item{{ request()->is('admin/my/section')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.section') }}"><span class="nav-icon fas fa-undo"></span> JH Section</a>
+        </li>
+        <li class="nav-item{{ request()->is('admin/my/strand')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.strand') }}"><span class="nav-icon fas fa-server"></span> SH Strand &amp; Track</a>
+        </li>
         </ul>
-      </li>
-
-      <li class="nav-header">Masterlist Section</li>
-      <li class="nav-item nav-item dropdown">
-        <a href="#" class="nav-link {{ request()->is('admin/my/teacher') ||  request()->is('admin/my/student') ||  request()->is('admin/my/archive') ||  request()->is('admin/my/backrecord')?'active':'' }}">
-          <i class="nav-icon far fa-file-alt"></i>
-          <p>
-              Masterlist
-          <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{ route('admin.teacher') }}" class="nav-link {{ request()->is('admin/my/teacher')?'active':'' }}">
-            <i class="nav-icon fas fa-id-card-alt"></i>
-            <p>Teacher</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.student') }}" class="nav-link {{ request()->is('admin/my/student')?'active':'' }}">
-            <i class="nav-icon far fa-id-badge"></i>
-            <p>Student</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.archive') }}" class="nav-link {{ request()->is('admin/my/archive')?'active':'' }}">
-            <i class="nav-icon fas fa-folder-open"></i>
-            <p>Archive</p>
-            </a>
-          </li>
-          <li class="nav-item">
-              <a href="{{ route('admin.backrecord') }}" class="nav-link {{ request()->is('admin/my/backrecord')?'active':'' }}">
-              <i class="nav-icon fas fa-undo"></i>
-              <p>Back Subject</p>
-              </a>
-          </li>
+    </li>
+    <!-- -->
+    <li class="nav-title">Masterlist</li>
+    <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
+        <i class="far fa-folder-open nav-icon"></i>Masterlist</a>
+        <ul class="nav-group-items">
+        <li class="nav-item {{ request()->is('admin/my/teacher')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.teacher') }}"><span class="nav-icon fas fa-id-card"></span> Teacher</a>
+        </li>
+        <li class="nav-item {{ request()->is('admin/my/student')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.student') }}"><span class="nav-icon far fa-id-badge"></span> Student</a>
+        </li>
+        <li class="nav-item {{ request()->is('admin/my/archive')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.archive') }}"><span class="nav-icon fas fa-folder-open"></span> Archive</a>
+        </li>
+        <li class="nav-item {{ request()->is('admin/my/backrecord')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.backrecord') }}"><span class="nav-icon fas fa-undo"></span> Back Subject</a>
+        </li>
         </ul>
-      </li>
-
-      <li class="nav-header">Settings</li>
-      <li class="nav-item nav-item dropdown">
-        <a href="#" class="nav-link {{ request()->is('admin/my/profile') || request()->is('admin/my/academic-year') || request()->is('admin/my/user')?'active':''  }}">
-          <i class="nav-icon fas fa-cogs"></i>
-          <p>
-              Settings
-          <i class="fas fa-angle-left right"></i>
-          </p>
-        </a>
-        <ul class="nav nav-treeview">
-          <li class="nav-item">
-            <a href="{{ route('admin.profile') }}" class="nav-link {{ request()->is('admin/my/profile')?'active':'' }}">
-            <i class="nav-icon fab fa-black-tie"></i>
-            <p>School Profile</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.academicYear') }}" class="nav-link {{ request()->is('admin/my/academic-year')?'active':'' }}">
-            <i class="nav-icon far fa-calendar-alt"></i>
-            <p>Academic Year</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.user') }}" class="nav-link {{ request()->is('admin/my/user')?'active':'' }}">
-            <i class="nav-icon fas fa-users-cog"></i>
-            <p>Manage Users</p>
-            </a>
-          </li>
+    </li>
+    <!-- -->
+    <li class="nav-title">Settings</li>
+    <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
+        <i class="fas fa-cogs nav-icon"></i>Settings</a>
+        <ul class="nav-group-items">
+        <li class="nav-item {{ request()->is('admin/my/profile')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.profile') }}"><span class="nav-icon fab fa-black-tie"></span> School Profile</a>
+        </li>
+        <li class="nav-item {{ request()->is('admin/my/academic-year')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.academicYear') }}"><span class="nav-icon far fa-calendar-alt"></span> Academic Year</a>
+        </li>
+        <li class="nav-item {{ request()->is('admin/my/user')?'active':'' }}">
+            <a class="nav-link" href="{{ route('admin.user') }}"><span class="nav-icon fas fa-users-cog"></span> Manage Users</a>
+        </li>
         </ul>
-      </li>
-      <li class="nav-item">
-        <a href="{{ route('auth.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
-          <i class="nav-icon fas fa-sign-out-alt  text-danger"></i>
-          <p>
-          Logout
-          </p>
-          <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" class="d-none">
-                  @csrf
-          </form>
+    </li>
+    <li class="nav-item {{ request()->is('admin/my/appointment')?'active':'' }}">
+        <a class="nav-link" href="{{ route('auth.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fas fa-sign-out-alt text-danger nav-icon"></i>Logout
+            <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
         </a>
     </li>
-  </ul>
-  {{-- end --}}
-</nav>
+</ul>

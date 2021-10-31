@@ -120,8 +120,10 @@ let tableHoliday = $("#tableHoliday").DataTable({
             data: null,
             render: function (data) {
                 return `
-                    <button class="btn btn-sm btn-primary btnEdit btnload_${data.id}" value="${data.id}"><i class="far fa-edit"></i></button>
-                    <button class="btn btn-sm btn-danger btnDelete btnDLoad_${data.id}" value="${data.id}"><i class="far fa-trash-alt"></i></button>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" style="font-size:9px" class="text-white btn btn-sm btn-info pl-3 pr-3 btnEdit btnload_${data.id}" value="${data.id}">Edit</button>
+                    <button type="button" style="font-size:9px" class="text-white btn btn-sm btn-danger btnDelete btnDLoad_${data.id}" value="${data.id}">Delete</button>
+                </div>
                 `;
             },
         },
@@ -199,6 +201,7 @@ $(document).on("click", ".btnDelete", function () {
             $(".btnDLoad_" + id)
                 .html("Edit")
                 .attr("disabled", false);
+                getToast("info", "Success", "Successfully Deleted!");
             tableHoliday.ajax.reload();
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
@@ -212,13 +215,16 @@ $(document).on("click", ".btnDelete", function () {
 
 /**
  *
- * --------------------- CALENDAR EVENT-----------------------------
+ * --------------------- CALENDARA EVENT-----------------------------
  *
  *
  */
 
 let showListOfAppointed = (selected) => {
+    $("#printAppointed").val(selected);
     $("#appointedTable").DataTable({
+        pageLength: 5,
+        lengthMenu: [ 5,10, 25, 50, 75, 100 ],
         destroy: true,
         ajax: "appointment/list/selected/" + selected,
         columns: [
@@ -305,3 +311,13 @@ let myEvent = () => {
         events: eventList,
     });
 };
+
+
+$("#printAppointed").on("click", function () {
+        popupCenter({
+            url: "appointment/print/report/" + $(this).val(),
+            title: "report",
+            w: 1400,
+            h: 800,
+        });
+});

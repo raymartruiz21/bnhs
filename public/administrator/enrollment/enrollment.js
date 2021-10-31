@@ -1,4 +1,4 @@
-let enrollmentTable = (level) => {
+let enrollmentTable = (level,year) => {
     $("#enrollmentTable").dataTable().fnDestroy();
     $("#enrollmentTable").dataTable({
         processing: true,
@@ -10,24 +10,31 @@ let enrollmentTable = (level) => {
                   </div>`,
         },
 
-        ajax: "enrollment/list/" + level,
+        ajax: "enrollment/list/" + level + "/" + year,
         columns: [
             { data: "roll_no" },
             { data: "fullname" },
-            { data: "curriculum" },
+            {
+                data: null,
+                render: function (data) {
+                    return data.curriculum != null
+                        ? data.curriculum
+                        : data.strand;
+                },
+            },
             { data: "section_name" },
             {
                 data: null,
                 render: function (data) {
                     switch (data.enroll_status) {
                         case "Pending":
-                            return `<span class="badge badge-warning" style="font-size: 12px;">${data.enroll_status}</span>`;
+                            return `<span class="badge badge-md bg-warning-gradient pb-1">${data.enroll_status}</span>`;
                             break;
                         case "Enrolled":
-                            return `<span class="badge badge-success" style="font-size: 12px;">${data.enroll_status}</span>`;
+                            return `<span class="badge badge-md bg-success-gradient">${data.enroll_status}</span>`;
                             break;
                         case "Dropped":
-                            return `<span class="badge badge-danger" style="font-size: 12px;">${data.enroll_status}</span>`;
+                            return `<span class="badge badge-md bg-danger-gradient">${data.enroll_status}</span>`;
                             break;
                         default:
                             return false;
@@ -49,7 +56,16 @@ let enrollmentTable = (level) => {
         ],
     });
 };
-enrollmentTable("all");
+enrollmentTable("all",$("select[name='school_year_id']").val());
 $("select[name='selectedGL']").on("change", function () {
-    enrollmentTable($(this).val());
+    enrollmentTable($(this).val(),$("select[name='school_year_id']").val());
+});
+
+$("select[name='school_year_id']").on("change", function () {
+    enrollmentTable($("select[name='selectedGL']").val(),$(this).val());
+});
+
+
+$("button[name='btnExport']").on('click', function () {
+    window.open("enrollment/export/by/level")
 });

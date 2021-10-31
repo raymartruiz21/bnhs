@@ -2,11 +2,6 @@
 @section('moreCss')
 <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatable/responsive.bootstrap4.min.css') }}">
-<style>
-    .color-font {
-        color: #6666ff;
-    }
-</style>
 @endsection
 @section('content')
 
@@ -14,39 +9,37 @@
 @include('administrator/masterlist/partial/viewBackSubject')
 {{-- Modal end --}}
 
-<div class="container-fluid">
-    <section class="content-header">
-        <hr>
-        <div class="row mb-2">
-            <div class="col-12">
-                <h3><i class="fas fa-undo-alt color-font"></i>&nbsp;&nbsp;Back Subject</h3>
-            </div>
-        </div>
-        <hr>
-        <div class="section-body">
-            <div class="col-12">
-                <div class="card">
-    
-                    <div class="card-body mt-2 pb-0 pt-1">
-                        {{-- <div class="table-responsive"> --}}
-                        {{-- dt-responsive nowrap --}}
-                        <table class="table table-striped" id="backsubjectTable">
-                            <thead>
-                                <tr>
-                                    <th>LRN</th>
-                                    <th>Fullname</th>
-                                    <th width="15%">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                        {{-- </div> --}}
+<section class="section">
+    <div class="section-body">
+        <div class="container-fluid">
+            <div class="callout border-top-0 border-bottom-0 border-end-0 elevation-2 bg-white dark:bg-dark" style="margin-top: -10px;">
+                <div class="row justify-content-between" style="margin-bottom: -20px;">
+                    <div class="col-lg-5 col-md-8">
+                        <p style="font-size: 25px;"><i class="fas fa-undo-alt text-dark"></i>&nbsp;&nbsp;Back Subject</p>
                     </div>
                 </div>
             </div>
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body mt-2 pb-0 pt-1">
+                            <div class="table-responsive">
+                            <table class="table table-striped" id="backsubjectTable">
+                                <thead>
+                                    <tr>
+                                        <th>LRN</th>
+                                        <th>Fullname</th>
+                                        <th width="15%">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
 
 @endsection
 @section('moreJs')

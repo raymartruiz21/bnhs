@@ -10,13 +10,13 @@ const sectionTable = () => {
         beforeSend: function () {
             $("#sectionTable").html(
                 `<tr>
-                    <td colspan="5" class="text-center">
-                        <div class="spinner-border spinner-border-sm" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                    </td>
-                </tr>
-                `
+                        <td colspan="5" class="text-center">
+                            <div class="spinner-border spinner-border-sm" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </td>
+                    </tr>
+                    `
             );
         },
     })
@@ -41,12 +41,12 @@ const sectionTable = () => {
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" style="font-size:9px" class="btn btn-info pl-3 pr-3 editSection editSec_${
+                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editSection editSec_${
                                         val.id
-                                    }" id="${val.id}"><i class="far fa-edit"></i></button>
-                                    <button type="button" style="font-size:9px" class="btn btn-danger deleteSection deleteSec_${
+                                    }" id="${val.id}">Edit</button>
+                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-danger deleteSection deleteSec_${
                                         val.id
-                                    }" id="${val.id}"><i class="far fa-trash-alt"></i></button>
+                                    }" id="${val.id}">Delete</button>
                                 </div>
                             </td>
                         </tr>

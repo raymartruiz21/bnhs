@@ -5,12 +5,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="appointedModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <button type="button" class="close btnCancelHoliday" data-dismiss="modal" aria-label="Close" style="background-color: transparent; border: none;">
+                    <span aria-hidden="true" style="font-size: 20px;"><b>&times;</b></span>
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table table-striped" id="appointedTable" style="font-size: 12px">
+               <div class="table-responsive">
+                <div class="float-left mb-3">
+                    <button type="button" class="btn btn-icon icon-left btn-info mr-3 text-white" id="printAppointed">
+                        <i class="fas fa-print"></i> Print List
+                    </button>
+                </div>
+                <table class="table table-hover table-ordered" id="appointedTable" style="font-size: 14px">
                     <thead>
                         <tr>
                             <th width="13%">Transaction No.</th>
@@ -23,7 +29,9 @@
                     </thead>
                     <tbody></tbody>
                 </table>
+               </div>
             </div>
         </div>
     </div>
 </div>
+
