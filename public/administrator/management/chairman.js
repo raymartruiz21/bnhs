@@ -24,6 +24,10 @@ const chairmanTable = () => {
                 getToast("warning", "Warning", data.error);
             } else {
                 if (data.length > 0) {
+                    data.sort(function (a, b) {
+                        return a.grade_level - b.grade_level;
+                    });
+                    console.log(data);
                     data.forEach((val) => {
                         htmlHold += `
                             <tr>
@@ -40,10 +44,10 @@ const chairmanTable = () => {
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editchairman editCha_${
+                                        <button type="button" style="font-size:9px" class="text-white btn btn-sm btn-info pl-3 pr-3 editchairman editCha_${
                                             val.id
                                         }" id="${val.id}">Edit</button>
-                                        <button type="button" style="font-size:9px" class="btn btn-sm btn-danger deletechairman deleteCha_${
+                                        <button type="button" style="font-size:9px" class="text-white btn btn-sm btn-danger deletechairman deleteCha_${
                                             val.id
                                         }" id="${val.id}">Delete</button>
                                     </div>
@@ -53,9 +57,9 @@ const chairmanTable = () => {
                     });
                 } else {
                     htmlHold = `
-                                <tr>
-                                    <td colspan="4" class="text-center">No available data</td>
-                                </tr>`;
+                    <tr>
+                        <td colspan="4" class="text-center">No available data</td>
+                    </tr>`;
                 }
             }
 
@@ -97,6 +101,7 @@ $("#chairmanForm").submit(function (e) {
                 document.getElementById("chairmanForm").reset();
                 $("input[name='id']").val("");
                 $("select[name='teacher_id']").val(null).trigger("change");
+                getToast("success", "Successfully", "added new Chairman");
                 chairmanTable();
             }
         })
@@ -129,6 +134,7 @@ $(document).on("click", ".editchairman", function () {
             $("input[name='chairman_name']").val(data.chairman_name);
             $("select[name='teacher_id']").val(data.teacher_id); // Select the option with a value of '1'
             $("select[name='teacher_id']").trigger("change"); // Notify any JS components that the value changed
+            
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
             console.log(jqxHR, textStatus, errorThrown);
@@ -160,7 +166,7 @@ $(document).on("click", ".deletechairman", function () {
     })
         .done(function (response) {
             $(".deleteCha_" + id).html("Delete");
-            getToast("success", "Success", "deleted one record");
+            getToast("warning", "Successfully", "deleted one record");
             chairmanTable();
         })
         .fail(function (jqxHR, textStatus, errorThrown) {

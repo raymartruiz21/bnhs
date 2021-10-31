@@ -1,7 +1,7 @@
 <form id="exportForm">@csrf
     <div class="modal fade" id="modalExport" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="modalExportLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog modal-sm">
             <div class="modal-content pb-0">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalExportLabel">Export File</h5>
@@ -28,8 +28,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-outline-primary btnGenerate">Generate</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btnGenerate">Generate</button>
                 </div>
             </div>
         </div>

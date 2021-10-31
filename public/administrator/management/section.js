@@ -40,10 +40,10 @@ const sectioTable = (level) => {
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editSection editSec_${
+                                    <button type="button" style="font-size:9px" class="btn btn-sm text-white btn-info pl-3 pr-3 editSection editSec_${
                                         val.id
                                     }" id="${val.id}">Edit</button>
-                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-danger deleteSection deleteSec_${
+                                    <button type="button" style="font-size:9px" class="btn btn-sm text-white btn-danger deleteSection deleteSec_${
                                         val.id
                                     }" id="${val.id}">Delete</button>
                                 </div>
@@ -97,6 +97,7 @@ $("#sectionForm").submit(function (e) {
                 document.getElementById("sectionForm").reset();
                 $("input[name='id']").val("");
                 $("select[name='teacher_id']").val(null).trigger("change");
+                getToast("success", "Successfully", "added one record");
             }
         })
         .fail(function (jqxHR, textStatus, errorThrown) {
@@ -160,7 +161,7 @@ $(document).on("click", ".deleteSection", function () {
     })
         .done(function (response) {
             $(".deleteSec" + id).html("Delete");
-            getToast("success", "Success", "deleted one record");
+            getToast("info", "Successfully", "deleted one record");
             sectioTable($("#selectedGL").val());
         })
         .fail(function (jqxHR, textStatus, errorThrown) {

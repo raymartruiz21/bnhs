@@ -3,44 +3,34 @@
 {{-- <link rel="stylesheet" href="{{ asset('css/datatable/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datatable/responsive.bootstrap4.min.css') }}"> --}}
 <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}">
-<style>
-    .color-font {
-        color: #6666ff;
-      }
-</style>
 @endsection
-
 @section('content')
-<div class="container-fluid">
-    <section class="content-header">
-        <hr>
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h3><i class="fas fa-tasks  color-font"></i>&nbsp;&nbsp;Manage Section and Subject</h3>
+<section class="section">
+    <div class="section-body">
+        <div class="container-fluid">
+            <div class="callout callout-info border-top-0 border-bottom-0 border-end-0 elevation-2 bg-white dark:bg-dark" style="margin-top: -10px;">
+                <p style="font-size: 25px;"><i class="fas fa-tasks  color-font"></i>&nbsp;&nbsp;Manage Section and Subject</p>
             </div>
-        </div>
-        <hr>
-        <div class="section-body">
+
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="form-row mb-3">
-                                <div class="col-1">
-                                    <label class="my-2">Filter:</label>
-                                </div>
-                                <div class="col-1">
-                                    <select name="grade_level_top" class="custom-select" required>
-                                        <option value=""></option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </div>
-                                <div class="col-3">
-                                    <select name="showSection" class="form-control select2">
-                                    </select>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text" for="inputGroupSelect01">Filter:</label>
+                                        <select class="form-select" id="inputGroupSelect01"  name="grade_level_top">
+                                            <option value="">Grade Level</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                        </select>
+                                        <select class="form-select" id="inputGroupSelect01"  name="showSection">
+                                            <option value="">Choose Section</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             </form>
@@ -67,12 +57,16 @@
                 </div><!-- col-lg-8 -->
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="card">
+                        <div class="card-header">
+                                Assign Subject Teacher
+                        </div>
                         <div class="card-body m-1">
                             <form id="AssignForm">@csrf
                                 <input type="hidden" name="id">
-                                <div class="form-group">
-                                    <label>Grade Level</label>
-                                    <select name="grade_level" class="custom-select" required>
+
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Grade Level</label>
+                                    <select name="grade_level" class="form-control" required>
                                         {{-- <option selected>Choose...</option> --}}
                                         <option value="7">7</option>
                                         <option value="8">8</option>
@@ -80,19 +74,19 @@
                                         <option value="10">10</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label>Class</label>
-                                    <select name="section_id" class="form-control select2" required></select>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Class</label>
+                                    <select name="section_id" class="form-control" required></select>
                                 </div>
-                                <div class="form-group">
-                                    <label>Subject</label>
-                                    <select name="subject_id" class="form-control select2" required></select>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Subject</label>
+                                    <select name="subject_id" class="form-control" required></select>
                                 </div>
     
-                                <div class="form-group">
-                                    <label>Subject Teacher</label>
-                                    <select name="teacher_id" class="form-control select2" required>
-                                        <option value=""></option>
+                                <div class="form-group mb-3">
+                                    <label class="mb-2">Subject Teacher</label>
+                                    <select name="teacher_id" class="form-control" required>
+                                        <option value="">Choose..</option>
                                         @foreach ($teachers as $teacher)
                                         <option value="{{ $teacher->id }}">
                                             {{ $teacher->teacher_lastname.', '.$teacher->teacher_firstname.' '.$teacher->teacher_middlename }}
@@ -107,16 +101,12 @@
                     </div>
                 </div><!-- col-lg-4 -->
             </div><!-- row -->
-        </div><!-- section-body -->
-    </section>
-</div>
+        </div>
+    </div><!-- section-body -->
+</section>
 @endsection
 
 @section('moreJs')
-{{-- <script src="{{ asset('js/datatable/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('js/datatable/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('js/datatable/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('js/datatable/responsive.bootstrap4.min.js') }}"></script> --}}
 <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
 <script src="{{ asset('administrator/management/assign.js') }}"></script>
 @endsection

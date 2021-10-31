@@ -1,7 +1,7 @@
 <form id="setSectionForm">@csrf
     <div class="modal fade" id="setSectionModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-dialog modal-md">
+        <div class="modal-dialog  modal-dialog-centered modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>Assign Section</h5>
@@ -20,9 +20,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary btnCancelSectionNow">Cancel</button>
+                    <button type="button" class="btn btn-secondary btnCancelSectionNow">Cancel</button>
                     <button type="submit"
-                        class="btn btn-outline-primary btnSaveSectionNow">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
+                        class="btn btn-primary btnSaveSectionNow">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
                 </div>
             </div>
         </div>

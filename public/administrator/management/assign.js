@@ -27,7 +27,9 @@ $("select[name='grade_level']").on("change", function () {
     searchBySection($(this).val());
     $("select[name='teacher_id']").val(null).trigger("change");
 });
+
 searchBySection(7);
+
 let searhBySubject = (section, action) => {
     let subjectHTML = "";
     $.ajax({
@@ -142,7 +144,7 @@ $("#AssignForm").submit(function (e) {
                 $("select[name='section_id']").val(null).trigger("change");
                 $("select[name='subject_id']").val(null).trigger("change");
                 $("select[name='teacher_id']").val(null).trigger("change");
-                getToast("info", "New", "Successfully saved");
+                getToast("success", "Successfully", "added one record");
             }
 
             if (data.errSubject) {
@@ -195,10 +197,10 @@ let loadTableSchedule = (section) => {
                         </td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editAssign editA${
+                                <button type="button" style="font-size:9px" class="btn btn-sm btn-info text-white pl-3 pr-3 editAssign editA${
                                     val.id
                                 }" id="${val.id}">Edit</button>
-                                <button type="button" style="font-size:9px" class="btn btn-sm btn-danger pl-2 pr-2 deleteAssign deleteA${
+                                <button type="button" style="font-size:9px" class="btn btn-sm btn-danger text-white pl-2 pr-2 deleteAssign deleteA${
                                     val.id
                                 }" id="${val.id}">Delete</button>
                             </div>
@@ -294,7 +296,7 @@ $(document).on("click", ".deleteAssign", function () {
             $(".deleteA" + id)
                 .html("Delete")
                 .attr("disabled", false);
-            getToast("success", "Success", "deleted one record");
+            getToast("info", "Successfully", "deleted one record");
             loadTableSchedule($('select[name="showSection"]').val());
         })
         .fail(function (jqxHR, textStatus, errorThrown) {

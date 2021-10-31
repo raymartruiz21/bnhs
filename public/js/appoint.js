@@ -36,25 +36,6 @@ $.ajax({
     .fail(function (a, b, c) {
         console.log(a, b, c);
     });
-// $(".datepicker").datepicker({
-//     dateFormat: "mm/dd/yy",
-//     minDate: 0,
-//     // beforeShowDay : function (date) {
-//     //       // 0 : Sunday, 1 : Monday, ...
-//     //       return dayOfWeek == 0 || dayOfWeek == 6? [false]: [true];
-
-//     //    },
-//     beforeShowDay: function (date) {
-//         let dayOfWeek = date.getDay();
-//         let datew = $.datepicker.formatDate("mm/dd/yy", date);
-//         // dayOfWeek == 0 || dayOfWeek == 6 ? [false] : [true];
-
-//         // if (dayOfWeek > 0 && dayOfWeek < 6) {
-//         //     return [true];
-//         // }
-//         return [eventHoliday.indexOf(datew) == -1];
-//     },
-// });
 
 let dateFetch = [];
 $.ajax({
@@ -99,15 +80,6 @@ $(".datepicker").datepicker({
         } else {
             return [true && day != 0 && day != 6, "vacant", ""];
         }
-        // check if date is in your array of dates
-        // if () {
-        //     // if it is return the following.
-        //     return [false, "not", "tooltip text"];
-        // } else {
-        //     // default
-        //     // Disable all sundays
-        //     return [day != 0 && day != 6, "", ""];
-        // }
     },
 });
 

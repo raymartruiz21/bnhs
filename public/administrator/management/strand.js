@@ -36,16 +36,12 @@ const strandTable = () => {
                             </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-info pl-3 pr-3 editStrand editStrand_${
+                                    <button type="button" style="font-size:9px" class="btn btn-sm text-white btn-info pl-3 pr-3 editStrand editStrand_${
                                         val.id
-                                    }" id="${val.id}">
-                        <i class="fas fa-edit"></i>            
-                        </button>
-                                    <button type="button" style="font-size:9px" class="btn btn-sm btn-danger deleteStrand deleteStrand_${
+                                    }" id="${val.id}">Edit</button>
+                                    <button type="button" style="font-size:9px" class="btn btn-sm text-white btn-danger deleteStrand deleteStrand_${
                                         val.id
-                                    }" id="${val.id}">
-                        <i class="fas fa-trash pl-2 pr-2"></i>            
-                        </button>
+                                    }" id="${val.id}">Delete</button>
                                 </div>
                             </td>
                         </tr>
@@ -83,11 +79,7 @@ $("#strandForm").submit(function (e) {
     })
         .done(function (data) {
             if (data.warning) {
-                getToast(
-                    "warning",
-                    "Warning",
-                    data.warning + ", please contact the administrator"
-                );
+                getToast( "warning", "Warning", data.warning + ", please contact the administrator");
             } else {
                 $(".btnSaveStrand").html("Submit");
                 $(".btnSaveStrand").attr("disabled", false);
@@ -95,6 +87,7 @@ $("#strandForm").submit(function (e) {
                 $("#idForStrand").val("");
                 $("#strandForm")[0].reset();
                 cancelStrand.hide();
+                getToast("success", "Successfully", "added one record");
             }
             // document.getElementById("strandForm").reset();
         })
@@ -148,7 +141,7 @@ $(document).on("click", ".deleteStrand", function () {
     })
         .done(function (response) {
             $(".deleteStrand_" + id).html("Delete");
-            getToast("success", "Success", "deleted one record");
+            getToast("success", "Successfully", "deleted one record");
             strandTable();
         })
         .fail(function (jqxHR, textStatus, errorThrown) {

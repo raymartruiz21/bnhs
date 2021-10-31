@@ -54,10 +54,19 @@
         <div class="section-body">
             <div class="card card-outline card-primary">
                 <div class="card-body pb-1">
-                    <div class="">
-                        <div class="float-left">
-                            <span style="font-size: 15px" class="txtSubjectName badge badge-warning pt-1 pb-1 mt-2"></span>
-                        </div>
+                    <div class="float-left pb-3">
+                        <span style="font-size: 15px" class="txtSubjectName badge badge-warning pt-1 pb-1 mt-2"></span>
+                    </div>
+                    <div class="col-lg-1 float-left pb-3">
+                        <button type="button" class="btn btn-outline-primary btn-block" id="btnImport"><i
+                                class="fas fa-cloud-upload-alt"></i>&nbsp;Import
+                        </button>
+                    </div>
+                    <div class="col-lg-1 float-left pb-3">
+                        <button class="btn btn-outline-secondary btnDownload" type="button"><i
+                            class="fas fa-cloud-download-alt"></i>Template</button>
+                    </div>
+                    <div class="table-responsive">
                         <table class="table table-bordered table-hover" id="myClassTable" style="font-size: 14px">
                             <thead>
                                 <tr>

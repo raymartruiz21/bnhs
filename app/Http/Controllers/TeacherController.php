@@ -18,30 +18,42 @@ use Illuminate\Support\Str;
 
 class TeacherController extends Controller
 {
+    
+    use Traits\StudentStatus;
+
     public function dashboard()
     {
-        return view('teacher/dashboard');
+        $sectionAvail = Assign::select('sections.section_name')
+            ->join('teachers', 'assigns.teacher_id', 'teachers.id')
+            ->join('sections', 'assigns.section_id', 'sections.id')
+            ->join('school_years', 'assigns.school_year_id', 'school_years.id')
+            ->where('school_years.status', 1)
+            ->where('teachers.id', Auth::user()->id)
+            ->groupBy('sections.section_name')
+            ->get();
+        return view('teacher/dashboard', compact('sectionAvail'));
     }
 
     public function classMonitor()
     {
-        return (Auth::user()->section) ?  view('teacher/classMonitor') : abort(403);
+        return (Auth::user()->section_info) ?  view('teacher/classMonitor') : abort(403);
     }
     public function grading()
     {
-        return view('teacher/grading');
+        return view('teacher/grading/grading');
     }
 
 
     public function loadMySection()
     {
         return response()->json(
-            Assign::select('sections.section_name', 'sections.id', 'subjects.descriptive_title', 'assigns.subject_id')
+            Assign::select('sections.section_name', 'sections.id', 'subjects.descriptive_title', 'assigns.subject_id', 'assigns.term')
                 ->join('teachers', 'assigns.teacher_id', 'teachers.id')
                 ->join('sections', 'assigns.section_id', 'sections.id')
                 ->join('subjects', 'assigns.subject_id', 'subjects.id')
                 ->join('school_years', 'assigns.school_year_id', 'school_years.id')
                 ->where('school_years.status', 1)
+                ->whereBetween('assigns.grade_level', [7, 10])
                 ->where('teachers.id', Auth::user()->id)
                 ->get()
         );
@@ -58,14 +70,10 @@ class TeacherController extends Controller
                     ->pluck('student_id')->toArray()
             )->where('enrollments.enroll_status', 'Enrolled')
             ->where('enrollments.section_id', $section)
+
             ->where('status', 1)
             ->get();
 
-        /**
-         * 
-         * register the subj of student using load the section when the teacher want to grade
-         * 
-         */
         if (!empty($toGradeStudentID)) {
             foreach ($toGradeStudentID as $value) {
                 $value['student_id'];
@@ -141,8 +149,8 @@ class TeacherController extends Controller
             'teacher_gender' => $request->gender,
             'roll_no' => empty($dataret->roll_no) ? $request->roll_no : $dataret->roll_no,
             'username' => empty($dataret->username) ? Helper::create_username($request->firstname, $request->lastname) : $dataret->username,
-            'orig_password' => empty($dataret->orig_password) ? Crypt::encrypt("pass123") : $dataret->orig_password,
-            'password' => empty($dataret->password) ? Hash::make("pass123") : $dataret->password,
+            'orig_password' => empty($dataret->orig_password) ? Crypt::encrypt("pnhs") : $dataret->orig_password,
+            'password' => empty($dataret->password) ? Hash::make("pnhs") : $dataret->password,
         ]);
     }
 
@@ -155,10 +163,12 @@ class TeacherController extends Controller
         return response()->json($teacher);
     }
 
+
+
     public function assign()
     {
-        $subjects = Subject::where('grade_level', Auth::user()->section->grade_level)
-            ->whereIn('subject_for', [Auth::user()->section->class_type, 'GENENRAL'])
+        $subjects = Subject::where('grade_level', Auth::user()->section_info->grade_level)
+            ->whereIn('subject_for', [Auth::user()->section_info->class_type, 'GENERAL'])
             ->get();
         $teachers = Teacher::select('id', DB::raw("CONCAT(teachers.teacher_lastname,', ',teachers.teacher_firstname,' ',teachers.teacher_middlename) as teacher_name"))->get();
         return view('teacher/assign', compact('subjects', 'teachers'));
@@ -215,5 +225,54 @@ class TeacherController extends Controller
     public function assignEdit(Assign $assign)
     {
         return response()->json($assign);
+    }
+
+    public function profile()
+    {
+        return view('teacher/profile');
+    }
+
+    public function certificate(){
+        return view('teacher/chairman/certificate');
+    }
+
+    public function loadMyEnrolledStudent()
+    {
+        $activeTerm = $this->activeTerm();    
+      if (Auth::user()->chairman_info->grade_level>=11) {
+        return response()->json([
+            'data'=>Enrollment::select('students.roll_no','students.id',
+            'sections.section_name', DB::raw("CONCAT(students.student_lastname,', ',students.student_firstname,' ',students.student_middlename) as fullname"))
+            ->join('students','enrollments.student_id','students.id')
+            ->join('sections','enrollments.section_id','sections.id')
+            ->where('enrollments.enroll_status', 'Enrolled')
+            ->where('enrollments.term', $activeTerm)
+            ->where('enrollments.grade_level', auth()->user()->chairman_info->grade_level)
+            ->where('enrollments.school_year_id', Helper::activeAY()->id)
+            ->get()
+        ]);
+      } else {
+        return response()->json([
+            'data'=>Enrollment::select('students.roll_no','students.id',
+            'sections.section_name', DB::raw("CONCAT(students.student_lastname,', ',students.student_firstname,' ',students.student_middlename) as fullname"))
+            ->join('students','enrollments.student_id','students.id')
+            ->join('sections','enrollments.section_id','sections.id')
+            ->where('enrollments.enroll_status', 'Enrolled')
+            ->where('enrollments.grade_level', auth()->user()->chairman_info->grade_level)
+            ->where('enrollments.school_year_id', Helper::activeAY()->id)
+            ->get()
+        ]);
+      }
+    }
+
+    public function loadMyCertificate(Student $student){
+        return view('teacher/chairman/partial/certificateOfEnrollment',[
+            'roll_no'=>$student->roll_no,
+            'fullname'=>$student->fullname,
+            'student_type'=>auth()->user()->chairman_info->grade_level>=11?"Senior High School":"Junior High School",
+            'grade_level'=>auth()->user()->chairman_info->grade_level,
+            'school_year'=>Helper::activeAY()->from.'-'.Helper::activeAY()->to,
+            'teacher'=>auth()->user()->fullname
+        ]);
     }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Forbidden 404</title>
+    <title>PNOP &mdash; Login</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
@@ -33,14 +33,14 @@
             <div class="container mt-5">
                 <div class="page-error">
                     <div class="page-inner">
-                        <img src="{{ asset('image/logo/ff.jpg') }}" alt="sample">
+                        <img src="{{ asset('image/logo/logo.png') }}" alt="">
 
                         <div class="page-description mt-5">
-                            <h3>The Online Enrollment has been ended <br> please contact or go to school for walkin transaction.</h3>
+                            <h3>Online Enrollment has been ended <br> please contact or go to school</h3>
                             <br><br>
-                            <p><i class="fa fa-address-book"></i> sample No. here</p>
-                            <p><i class="fa fa-at"></i> sample@gmail.com</p>
-                            <p><i class="fa fa-map-marker-alt"></i> Balaugan, Bula, Camarines Sur</p>
+                            <p><i class="fa fa-address-book"></i> 09918742564</p>
+                            <p><i class="fa fa-at"></i> pnhs@gmail.com</p>
+                            <p><i class="fa fa-map-marker-alt"></i> Zone 2, Lapaz Pawili, Pili Camarines Sur</p>
                         </div>
                     </div>
                 </div>

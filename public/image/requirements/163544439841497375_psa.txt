@@ -1,0 +1,30 @@
+open the project folder then right click, select git bash here. Then copy the command below
+
+composer install --ignore-platform-reqs
+
+Create copy of .env.example with name .env
+
+This is your environment file which is required by laravel project
+
+Open .env file and update this file with your MySQL Connection credentilas
+
+After that run following command
+
+php artisan key:generate
+
+php artisan config:cache
+
+composer dump-autoload
+
+After that run your migration commands
+
+php artisan migrate
+
+Now Run your project with following command
+
+php artisan serve --host 0.0.0.0 --port 8000
+
+Now you are done, you can browse project on
+
+localhost:8000 | 127.0.0.1:8000 | 0.0.0.0:8000 | YOUR_IP:8000
+I think this will help you out.
